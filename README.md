@@ -1,4 +1,8 @@
-# DS FICO Project
+#### Author: Chase R.
+#### Date: 07/19
+
+## DS FICO Project
+
 ### Introduction
 The project is to demonstrate an approach to a credit scoring model based on an open source dataset that does not provide descriptions for the features beyond the label "y", which denotes FICO score. The purpose of the project is to demonstrate a data science approach towards building such a model, what questions would need to be asked, and what steps could be taken to score customers. 
 
@@ -15,12 +19,11 @@ To run the program from the command line follow the following steps:
   
    python main.py training_set.csv holdout_set.csv
   
-   Note***
-   training_set.csv = whatever file you want the model to train on based on similar features
-   holdout_set.csv = the holdout file you want to test the model on
-   
-   python main.py training_set.csv holdout_set.csv
-   
+Note***
+
+training_set.csv = whatever file you want the model to train on based on similar features
+
+holdout_set.csv = the holdout file you want to test the model on 
    
 ### Model
 Currently, the model takes about ~17 minutes to complete with the number of estimators set to 10. Although the RSME score would likely improve if we increased the number of estimators, the current time constraints for the project prevent further grid searching the parameters necessary to optimize the model.
