@@ -1,5 +1,8 @@
 #Author: Chase Renick
 #Project: DS FICO SCORE PROJECT
+#Purpose: File contains main block and overall structure of how to build
+#machine learning model on training set, testing it on test set, and then predicting on a holdout set
+#Date: 07/19
 
 import pandas as pd
 import time
@@ -92,10 +95,8 @@ def main(argv):
     print ("Holdout Set Regressor Accuracy: ", regressor_holdout_accuracy)
 
     print ("Generating Output")
-    final_df = pd.DataFrame(holdout_predictions)
-    final_df.columns = 'hs_predictions'
     #Saving the results to the current directory
-    wh_functions.resultsFile(final_df)
+    wh_functions.resultsFile(holdout_predictions)
 
 if __name__ == '__main__':
 
