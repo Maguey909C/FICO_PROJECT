@@ -194,5 +194,6 @@ def resultsFile(predictions):
     """
     df = pd.DataFrame(predictions)
     df.columns = ['hs_predictions']
+    df['hs_predicitions_rounded'] = df['hs_predictions'].round() #rounding the predictions to generate more user friendly FICO scores
 
     return df.to_csv("holdout_set_results.csv")
