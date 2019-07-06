@@ -4,6 +4,7 @@
 #machine learning model on training set, testing it on test set, and then predicting on a holdout set
 #Date: 07/19
 
+#importing packages
 import pandas as pd
 import time
 from warnings import simplefilter
@@ -11,6 +12,7 @@ import sys, getopt
 import os
 import wh_functions
 
+#Model Blocks
 def featureBlock(df, holdout_df):
     """
     INPUT: A dataFrame
