@@ -16,21 +16,26 @@ The two python files relate to the ipython notebook code which was transformed i
 1. Place the training data set, and the holdout data set in the same directory as the main.py and wh_funtions.py file.
 2. From the anaconda prompt, cd into this directory and run the following command:
   
-   python main.py training_set.csv holdout_set.csv
+   python main.py input_file_1.csv input_file_2.csv
   
 Note***
 
-training_set.csv = whatever file you want the model to train on based on similar features
+input_file_1.csv = whatever file you want the model to train on based on similar features
 
-holdout_set.csv = the holdout file you want to test the model on 
+input_file_2.csv = the holdout file you want to test the model on 
    
 ### Model
-Currently, the model takes about ~17 minutes to complete with the number of estimators set to 10. Although the RSME score would likely improve if we increased the number of estimators, the current time constraints for the project prevent further grid searching the parameters necessary to optimize the model.
+Currently, the model takes about ~5 minutes to complete with the number of estimators set for the Random Forest Regressor set to 100 and the boosted estimators set to 10.  The model can improve we we continued to increase the number of estimators, but in the interest of time, I chose to to favor run time over the ideal model performance. The hyperparameters were gridsearched, but again in the interest of time, there are more combinations that could to attempted with more compute power.
 
-### Output Files
-When the model completes, it wil generate a csv file called, hold_out_set_results.csv, that contains the estimated FICO predictions from the holdout test set taken from the command line. Further joining of the customer ID number and other improvements to the model were not included by the author as it was not required for the project.
+### Output
+
+As the model runs it will indicate in the console what step it is currently in during the build process. As the model reaches its completion it will print to the console the RSME and Regessor Accuracy to the console for input_file_1.csv and then the same evaluation metrics for input_file_2.csv .  Please note thta input_file_2.csv does not undergo the test train or split process since we want to predict on this dataset all FICO values related to customers.
+
+When the model completes, it wil generate a pandas dataframe from the predictions generated from the input_file_2.csv, and it will save the predictoins in a file called, hold_out_set_results.csv.  hold_out_set_results.csv contains both the estimated FICO predictions as well as a rounded version of them, in case the user prefers the whole number to compare FICO. Joining other attributes to the results such as customer ID number and other improvements to the model were beyond the scope of this project.
 
 ### Conclusion
+The model performed best with a gridsearched Random Forest Regressor ensemble technique using AdaBoost.  The RSME score was around 28.5 and the Regressor Accuracy near 94.3%. The model and continue to improve with more grid searching and further knowledge of which features were categorical or not, but for the moment it performs sufficiently well for this project.
+
 As the evolution of the credit scoring model continues to evolve, it will be critical that data scientist and software developers do not build in biases into the predictive models when extending credit.  FICO has held competitions to help data scientists explain their "black box" models in part because the industry is heavily regulated and consumers will want to know why they are not being extended credit if denied.  https://community.fico.com/s/explainable-machine-learning-challenge.  There is much to do in this space in years to come, and it will be exciting to see what the outcomes will be.
    
  
