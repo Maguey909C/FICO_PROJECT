@@ -9,7 +9,7 @@ from sklearn.preprocessing import RobustScaler
 from sklearn.impute import SimpleImputer
 from sklearn.model_selection import train_test_split
 from sklearn.ensemble.forest import RandomForestRegressor
-from sklearn.ensemble import BaggingRegressor
+from sklearn.ensemble import AdaBoostRegressor
 from sklearn.metrics import mean_squared_error
 from sklearn.model_selection import cross_val_score
 from sklearn.metrics import mean_squared_error, accuracy_score
@@ -158,20 +158,24 @@ def baggedModel(X_train, y_train, X_test, y_test, X_holdout, y_holdout):
     INPUT: X_train, y_train, and the dataset you plan on predicting on
     OUTPUT: The predictions for the unseen dataset
     """
-    rf_reg = RandomForestRegressor(n_estimators=10)
-    bagged_rf_rg = BaggingRegressor(base_estimator=rf_reg,
-                                             n_estimators=20,
+    rf_reg = RandomForestRegressor(max_depth= 20,
+                                    max_features='sqrt',
+                                    min_samples_leaf= 4,
+                                    min_samples_split= 5,
+                                    n_estimators= 100)
+    boost_rf_rg = AdaBoostRegressor(base_estimator=rf_reg,
+                                             n_estimators=10,
                                              random_state=123)
     #Trained model fit on training set
-    bagged_rf_rg.fit(X_train, y_train)
+    boost_rf_rg.fit(X_train, y_train)
 
     #Prediting on Test Set
-    predictions_testset = bagged_rf_rg.predict(X_test)
-    regressor_test_accuracy = bagged_rf_rg.score(X_test,y_test)
+    predictions_testset = boost_rf_rg.predict(X_test)
+    regressor_test_accuracy = boost_rf_rg.score(X_test,y_test)
 
     #Predicting on Holdout Set
-    predictions_holdoutset = bagged_rf_rg.predict(X_holdout)
-    regressor_holdout_accuracy = bagged_rf_rg.score(X_holdout,y_holdout)
+    predictions_holdoutset = boost_rf_rg.predict(X_holdout)
+    regressor_holdout_accuracy = boost_rf_rg.score(X_holdout,y_holdout)
 
     return predictions_testset, predictions_holdoutset, regressor_test_accuracy, regressor_holdout_accuracy
 
