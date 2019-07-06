@@ -10,9 +10,8 @@ The project is to demonstrate an approach to a credit scoring model based on an 
 Since the features of this dataset were unknown, a number of assumptions were made about what they could represent such as 'x001' representing customer ID, some number of features were likely categorical, others were non categorical, among others. Many of these explanations and assumptions can be seen in the ipython notebook.
 
 ### Input Files
-There is an ipython notebook file which walks through step by step an approach to building and scoring a model for this dataset based on the RSME value.  Additionally, two files were provided that essentially turn the ipython notebook code into more production ready code to be run from the command line.
-
-To run the program from the command line follow the following steps:
+There is an ipython notebook file which walks through step by step an approach to building and scoring a model for this dataset based on the RSME value.
+The two python files relate to the ipython notebook code which was transformed into more production level code to be run from the command line. In order run the program from the command line, you must have 2 csv files to compare within the same directory as the main.py file and the wh_functions.py file. 
 
 1. Place the training data set, and the holdout data set in the same directory as the main.py and wh_funtions.py file.
 2. From the anaconda prompt, cd into this directory and run the following command:
