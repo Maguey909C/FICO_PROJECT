@@ -1,6 +1,7 @@
 #Author: Chase R.
-#Date:7/19
+#Project: DS FICO MODEL
 #Purpose: File contains all relevant functions needed to perform machine learning on FICO dataset
+#Date:7/19
 
 import pandas as pd
 import numpy as np
@@ -157,7 +158,7 @@ def baggedModel(X_train, y_train, X_test, y_test, X_holdout, y_holdout):
     INPUT: X_train, y_train, and the dataset you plan on predicting on
     OUTPUT: The predictions for the unseen dataset
     """
-    rf_reg = RandomForestRegressor(n_estimators=20)
+    rf_reg = RandomForestRegressor(n_estimators=10)
     bagged_rf_rg = BaggingRegressor(base_estimator=rf_reg,
                                              n_estimators=20,
                                              random_state=123)
@@ -185,11 +186,13 @@ def rsme(actuals, predictions, title):
 
     print ("RSME SCORE OF "+str(title)+":", rsme_score)
 
-def resultsFile(df):
+def resultsFile(predictions):
     """
     INPUT:A dataframe
     OUTPUT: A csv file of that dataframe placed in the current directory where this file sits
     PURPOSE: Generate results to a dataframe based on output
     """
+    final_df = pd.DataFrame(predictions)
+    final_df.columns = ['hs_predictions']
 
     return df.to_csv("holdout_set_results.csv")
