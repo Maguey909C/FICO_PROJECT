@@ -25,7 +25,9 @@ input_file_1.csv = whatever file you want the model to train on based on similar
 input_file_2.csv = the holdout file you want to test the model on 
    
 ### Model
-Currently, the model takes about ~5 minutes to complete with the number of estimators set for the Random Forest Regressor set to 100 and the boosted estimators set to 10.  The model can improve we we continued to increase the number of estimators, but in the interest of time, I chose to to favor run time over the ideal model performance. The hyperparameters were gridsearched, but again in the interest of time, there are more combinations that could to attempted with more compute power.
+Based on my current hardware of Intel i7 @2.90GHz and 32GB RAM, model specs oRandom Forest Regressor estimators=100 and the boosted estimators=10, the model takes about ~5 minutes to complete without any multiprocessing or parallel processing implementations.
+
+The model could improve if we increaed the number of estimators, but in the interest of time and the marginal benefits of such improvement in performance, I chose to to favor run time over the ideal performance. The hyperparameters were grid searched, but again in the interest of time, there are more combinations that could to attempted with more compute power.
 
 ### Output
 
