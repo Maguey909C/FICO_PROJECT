@@ -192,7 +192,7 @@ def resultsFile(predictions):
     OUTPUT: A csv file of that dataframe placed in the current directory where this file sits
     PURPOSE: Generate results to a dataframe based on output
     """
-    final_df = pd.DataFrame(predictions)
-    final_df.columns = ['hs_predictions']
+    df = pd.DataFrame(predictions)
+    df.columns = ['hs_predictions']
 
     return df.to_csv("holdout_set_results.csv")
