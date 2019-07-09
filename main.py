@@ -1,7 +1,7 @@
 #Author: Chase Renick
 #Project: DS FICO SCORE PROJECT
-#Purpose: File contains main block and overall structure of how to build
-#machine learning model on training set, testing it on test set, and then predicting on a holdout set
+#Purpose: File contains main block which outlines the build of the machine learning model on training set, 
+#testing it on test set, and then predicting on a holdout set.  See Read me for further details
 #Date: 07/19
 
 #importing packages
